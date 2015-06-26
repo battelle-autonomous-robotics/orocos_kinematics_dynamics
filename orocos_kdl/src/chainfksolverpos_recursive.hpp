@@ -41,8 +41,10 @@ namespace KDL {
 
         virtual int JntToCart(const JntArray& q_in, Frame& p_out, int segmentNr=-1);
 
+        virtual void updateInternalDataStructures() {};
+
     private:
-        const Chain chain;
+        const Chain& chain;
     };
 
 }

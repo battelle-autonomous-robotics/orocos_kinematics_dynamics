@@ -43,13 +43,22 @@ ChainIdSolver_Vereshchagin::ChainIdSolver_Vereshchagin(const Chain& chain_, Twis
     tmpm = VectorXd::Ones(nc);
 }
 
+void ChainIdSolver_Vereshchagin::updateInternalDataStructures() {
+    nj = chain.getNrOfJoints();
+    ns = chain.getNrOfSegments();
+    results = std::vector<segment_info, Eigen::aligned_allocator<segment_info> >(ns+1,segment_info(nc));
+}
+
 int ChainIdSolver_Vereshchagin::CartToJnt(const JntArray &q, const JntArray &q_dot, JntArray &q_dotdot, const Jacobian& alfa, const JntArray& beta, const Wrenches& f_ext, JntArray &torques)
 {
+    nj = chain.getNrOfJoints();
+    if(ns != chain.getNrOfSegments())
+        return (error = E_NOT_UP_TO_DATE);
     //Check sizes always
     if (q.rows() != nj || q_dot.rows() != nj || q_dotdot.rows() != nj || torques.rows() != nj || f_ext.size() != ns)
-        return -1;
+        return (error = E_SIZE_MISMATCH);
     if (alfa.columns() != nc || beta.rows() != nc)
-        return -2;
+        return (error = E_SIZE_MISMATCH);
     //do an upward recursion for position and velocities
     this->initial_upwards_sweep(q, q_dot, q_dotdot, f_ext);
     //do an inward recursion for inertia, forces and constraints
@@ -58,7 +67,7 @@ int ChainIdSolver_Vereshchagin::CartToJnt(const JntArray &q, const JntArray &q_d
     this->constraint_calculation(beta);
     //do an upward recursion to propagate the result
     this->final_upwards_sweep(q_dotdot, torques);
-    return 0;
+    return (error = E_NOERROR);
 }
 
 void ChainIdSolver_Vereshchagin::initial_upwards_sweep(const JntArray &q, const JntArray &qdot, const JntArray &qdotdot, const Wrenches& f_ext)

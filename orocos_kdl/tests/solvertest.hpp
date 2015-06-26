@@ -8,10 +8,16 @@
 #include <chainfksolvervel_recursive.hpp>
 #include <chainiksolvervel_pinv.hpp>
 #include <chainiksolvervel_pinv_givens.hpp>
+#include <chainiksolvervel_pinv_nso.hpp>
 #include <chainiksolvervel_wdls.hpp>
 #include <chainiksolverpos_nr.hpp>
+#include <chainiksolverpos_lma.hpp>
+#include <chainiksolverpos_nr_jl.hpp>
 #include <chainjnttojacsolver.hpp>
 #include <chainidsolver_vereshchagin.hpp>
+#include <chainidsolver_recursive_newton_euler.hpp>
+#include <chaindynparam.hpp>
+
 
 using namespace KDL;
 
@@ -25,6 +31,7 @@ class SolverTest : public CppUnit::TestFixture
     CPPUNIT_TEST(VereshchaginTest );
     CPPUNIT_TEST(IkSingularValueTest );
     CPPUNIT_TEST(IkVelSolverWDLSTest );
+    CPPUNIT_TEST(UpdateChainTest );
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -38,6 +45,7 @@ public:
     void VereshchaginTest();
     void IkSingularValueTest() ;
     void IkVelSolverWDLSTest();
+    void UpdateChainTest();
 
 private:
 

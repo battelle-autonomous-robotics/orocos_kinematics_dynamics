@@ -24,7 +24,7 @@
 
 namespace KDL
 {
-    ChainIkSolverVel_pinv_nso::ChainIkSolverVel_pinv_nso(const Chain& _chain, JntArray _opt_pos, JntArray _weights, double _eps, int _maxiter, double _alpha):
+    ChainIkSolverVel_pinv_nso::ChainIkSolverVel_pinv_nso(const Chain& _chain, const JntArray& _opt_pos, const JntArray& _weights, double _eps, int _maxiter, double _alpha):
         chain(_chain),
         jnt2jac(chain),
         nj(chain.getNrOfJoints()),
@@ -37,6 +37,7 @@ namespace KDL
         tmp2(VectorXd::Zero(nj)),
         eps(_eps),
         maxiter(_maxiter),
+        svdResult(0),
         alpha(_alpha),
         weights(_weights),
         opt_pos(_opt_pos)
@@ -56,8 +57,23 @@ namespace KDL
         tmp2(VectorXd::Zero(nj)),
         eps(_eps),
         maxiter(_maxiter),
+        svdResult(0),
         alpha(_alpha)
     {
+    }
+
+    void ChainIkSolverVel_pinv_nso::updateInternalDataStructures() {
+        jnt2jac.updateInternalDataStructures();
+        nj = chain.getNrOfJoints();
+        jac.resize(nj);
+        U.conservativeResizeLike(MatrixXd::Zero(6,nj));
+        S.conservativeResizeLike(VectorXd::Zero(nj));
+        Sinv.conservativeResizeLike(VectorXd::Zero(nj));
+        V.conservativeResizeLike(MatrixXd::Zero(nj,nj));
+        tmp.conservativeResizeLike(VectorXd::Zero(nj));
+        tmp2.conservativeResizeLike(VectorXd::Zero(nj));
+        opt_pos.data.conservativeResizeLike(VectorXd::Zero(nj));
+        weights.data.conservativeResizeLike(VectorXd::Ones(nj));
     }
 
     ChainIkSolverVel_pinv_nso::~ChainIkSolverVel_pinv_nso()
@@ -67,18 +83,23 @@ namespace KDL
 
     int ChainIkSolverVel_pinv_nso::CartToJnt(const JntArray& q_in, const Twist& v_in, JntArray& qdot_out)
     {
+        if (nj != chain.getNrOfJoints())
+            return (error = E_NOT_UP_TO_DATE);
+        if (nj != q_in.rows() || nj != qdot_out.rows() || nj != opt_pos.rows() || nj != weights.rows())
+            return (error = E_SIZE_MISMATCH);
         //Let the ChainJntToJacSolver calculate the jacobian "jac" for
         //the current joint positions "q_in" 
-        jnt2jac.JntToJac(q_in,jac);
+        error = jnt2jac.JntToJac(q_in,jac);
+        if (error < E_NOERROR) return error;
 
         //Do a singular value decomposition of "jac" with maximum
         //iterations "maxiter", put the results in "U", "S" and "V"
         //jac = U*S*Vt
-        int svdResult = svd_eigen_HH(jac.data,U,S,V,tmp,maxiter);
+        svdResult = svd_eigen_HH(jac.data,U,S,V,tmp,maxiter);
         if (0 != svdResult)
         {
             qdot_out.data.setZero() ;
-            return svdResult;
+            return error = E_SVD_FAILED;
         }
 
         unsigned int i;
@@ -138,19 +159,23 @@ namespace KDL
           }
         }
         //return the return value of the svd decomposition
-        return svdResult;
+        return (error = E_NOERROR);
     }
 
     int ChainIkSolverVel_pinv_nso::setWeights(const JntArray & _weights)
     {
+        if (nj != _weights.rows())
+            return (error = E_SIZE_MISMATCH);
       weights = _weights;
-      return 0;
+      return (error = E_NOERROR);
     }
 
     int ChainIkSolverVel_pinv_nso::setOptPos(const JntArray & _opt_pos)
     {
+        if (nj != _opt_pos.rows())
+            return (error = E_SIZE_MISMATCH);
       opt_pos = _opt_pos;
-      return 0;
+      return (error = E_NOERROR);
     }
 
     int ChainIkSolverVel_pinv_nso::setAlpha(const double _alpha)

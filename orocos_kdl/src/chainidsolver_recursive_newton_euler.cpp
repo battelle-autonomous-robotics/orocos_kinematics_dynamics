@@ -37,6 +37,7 @@ namespace KDL{
         X.resize(ns);
         S.resize(ns);
         v.resize(ns);
+        a.resize(ns);
         f.resize(ns);
     }
 

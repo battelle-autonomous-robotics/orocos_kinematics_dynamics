@@ -44,9 +44,8 @@ ChainIdSolver_Vereshchagin::ChainIdSolver_Vereshchagin(const Chain& chain_, Twis
 }
 
 void ChainIdSolver_Vereshchagin::updateInternalDataStructures() {
-    nj = chain.getNrOfJoints();
     ns = chain.getNrOfSegments();
-    results = std::vector<segment_info, Eigen::aligned_allocator<segment_info> >(ns+1,segment_info(nc));
+    results.resize(ns+1,segment_info(nc));
 }
 
 int ChainIdSolver_Vereshchagin::CartToJnt(const JntArray &q, const JntArray &q_dot, JntArray &q_dotdot, const Jacobian& alfa, const JntArray& beta, const Wrenches& f_ext, JntArray &torques)

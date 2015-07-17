@@ -45,6 +45,7 @@
 #ifndef KDL_VELOCITYPROFILE_H
 #define KDL_VELOCITYPROFILE_H
 
+#include "kdlapi.hpp"
 #include "utilities/utility.h"
 #include "utilities/utility_io.h"
 
@@ -59,7 +60,7 @@ namespace KDL {
      * in function of time. It defines the how a point s moves on a path S.
      * @ingroup Motion
      */
-class VelocityProfile
+class KDL_DLLAPI VelocityProfile
 	{
 	public:
 		// trajectory parameters are set in constructor of

@@ -17,6 +17,8 @@
 #ifndef	__SOLVERI_HPP
 #define	__SOLVERI_HPP
 
+#include "kdlapi.hpp"
+
 namespace KDL {
 
 /**
@@ -81,7 +83,7 @@ namespace KDL {
  * }
  * \endcode
  */
-class SolverI
+class KDL_DLLAPI SolverI
 {
 public:
     enum {

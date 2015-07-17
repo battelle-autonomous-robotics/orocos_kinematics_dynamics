@@ -22,6 +22,7 @@
 #ifndef KDL_CHAIN_FKSOLVER_HPP
 #define KDL_CHAIN_FKSOLVER_HPP
 
+#include "kdlapi.hpp"
 #include "chain.hpp"
 #include "framevel.hpp"
 #include "frameacc.hpp"
@@ -40,7 +41,7 @@ namespace KDL {
      */
 
     //Forward definition
-    class ChainFkSolverPos : public KDL::SolverI {
+    class KDL_DLLAPI ChainFkSolverPos : public KDL::SolverI {
     public:
         /**
          * Calculate forward position kinematics for a KDL::Chain,
@@ -61,7 +62,7 @@ namespace KDL {
      *
      * @ingroup KinematicFamily
      */
-    class ChainFkSolverVel : public KDL::SolverI {
+    class KDL_DLLAPI ChainFkSolverVel : public KDL::SolverI {
     public:
         /**
          * Calculate forward position and velocity kinematics, from
@@ -84,7 +85,7 @@ namespace KDL {
      * @ingroup KinematicFamily
      */
 
-    class ChainFkSolverAcc : public KDL::SolverI {
+    class KDL_DLLAPI ChainFkSolverAcc : public KDL::SolverI {
     public:
         /**
          * Calculate forward position, velocity and accelaration
@@ -97,9 +98,9 @@ namespace KDL {
          *
          * @return if < 0 something went wrong
          */
-    virtual int JntToCart(const JntArrayAcc& q_in, FrameAcc& out,int segmentNr=-1)=0;
+		virtual int JntToCart(const JntArrayAcc& q_in, FrameAcc& out,int segmentNr=-1)=0;
 
-        virtual ~ChainFkSolverAcc()=0;
+        virtual ~ChainFkSolverAcc(){};
     };
 
 

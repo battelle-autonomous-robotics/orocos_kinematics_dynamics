@@ -49,15 +49,7 @@ IF(NOT HAVE_STL_CONTAINER_INCOMPLETE_TYPES AND NOT KDL_USE_NEW_TREE_INTERFACE)
         "incomplete types, this configuration is likely invalid")
 ENDIF()
 
-#In Windows (Visual Studio) it is necessary to specify the postfix
-#of the debug library name and no symbols are exported by kdl, 
-#so it is necessary to compile it as a static library
-IF(MSVC)
-    SET(CMAKE_DEBUG_POSTFIX "d")
-    SET(LIB_TYPE STATIC)
-ELSE(MSVC)
-    SET(LIB_TYPE SHARED)
-ENDIF(MSVC)
+SET(LIB_TYPE SHARED)
 
 CONFIGURE_FILE(config.h.in config.h @ONLY)
 

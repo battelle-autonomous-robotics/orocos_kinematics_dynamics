@@ -57,6 +57,7 @@
 #ifndef TRAJECTORY_H
 #define TRAJECTORY_H
 
+#include "kdlapi.hpp"
 #include "frames.hpp"
 #include "frames_io.hpp"
 #include "path.hpp"
@@ -75,7 +76,7 @@ namespace KDL {
 	 * velocity profile.
 	  * @ingroup Motion
 	 */
-	class Trajectory
+	class KDL_DLLAPI Trajectory
 	{
 	public:
 		virtual double Duration() const = 0;

@@ -22,6 +22,7 @@
 #ifndef KDL_CHAIN_IKSOLVERVEL_WDLS_HPP
 #define KDL_CHAIN_IKSOLVERVEL_WDLS_HPP
 
+#include "kdlapi.hpp"
 #include "chainiksolver.hpp"
 #include "chainjnttojacsolver.hpp"
 #include <Eigen/Core>
@@ -79,9 +80,9 @@ namespace KDL
          *
          */
 
-        explicit ChainIkSolverVel_wdls(const Chain& chain,double eps=0.00001,int maxiter=150);
+        KDL_DLLAPI explicit ChainIkSolverVel_wdls(const Chain& chain,double eps=0.00001,int maxiter=150);
         //=ublas::identity_matrix<double>
-        ~ChainIkSolverVel_wdls();
+        KDL_DLLAPI ~ChainIkSolverVel_wdls();
 
         /**
          * Find an output joint velocity \a qdot_out, given a starting joint pose
@@ -98,7 +99,7 @@ namespace KDL
          * @note If E_SVD_FAILED returned, then getSvdResult() returns the error
          * code from the SVD algorithm.
 		 */
-        virtual int CartToJnt(const JntArray& q_in, const Twist& v_in, JntArray& qdot_out);
+        KDL_DLLAPI virtual int CartToJnt(const JntArray& q_in, const Twist& v_in, JntArray& qdot_out);
         /**
          * not (yet) implemented.
          *
@@ -127,7 +128,7 @@ namespace KDL
          * it gets an infinite weight in the norm computation.  For
          * more detailed explanation : vincent.padois@upmc.fr
          */
-        void setWeightJS(const Eigen::MatrixXd& Mq);
+        KDL_DLLAPI void setWeightJS(const Eigen::MatrixXd& Mq);
 
         /**
          * Set the task space weighting matrix
@@ -152,20 +153,20 @@ namespace KDL
          * weighted norm sqrt(|x_dot-Jq_dot|'*(M_x^2)*|x_dot-Jq_dot|).
          * For more detailed explanation : vincent.padois@upmc.fr
          */
-        void setWeightTS(const Eigen::MatrixXd& Mx);
+        KDL_DLLAPI void setWeightTS(const Eigen::MatrixXd& Mx);
 
         /**
          * Set lambda
          */
-        void setLambda(const double lambda);
+        KDL_DLLAPI void setLambda(const double lambda);
         /**
          * Set eps
          */
-        void setEps(const double eps_in);
+        KDL_DLLAPI void setEps(const double eps_in);
         /**
          * Set maxIter
          */
-        void setMaxIter(const int maxiter_in);
+        KDL_DLLAPI void setMaxIter(const int maxiter_in);
 
         /**
          * Request the number of singular values of the jacobian that are < eps;
@@ -197,7 +198,7 @@ namespace KDL
         int getSVDResult()const {return svdResult;};
 
         /// @copydoc KDL::SolverI::strError()
-        virtual const char* strError(const int error) const;
+        KDL_DLLAPI virtual const char* strError(const int error) const;
 
     private:
         const Chain chain;

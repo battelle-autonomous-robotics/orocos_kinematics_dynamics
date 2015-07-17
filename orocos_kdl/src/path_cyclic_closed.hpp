@@ -44,6 +44,7 @@
 #ifndef KDL_MOTION_PATH_CYCLIC_CLOSED_H
 #define KDL_MOTION_PATH_CYCLIC_CLOSED_H
 
+#include "kdlapi.hpp"
 #include "frames.hpp"
 #include "frames_io.hpp"
 #include "path.hpp"
@@ -57,7 +58,7 @@ namespace KDL {
 	  * which is traversed a number of times.
 	  * @ingroup Motion
 	  */
-	 class Path_Cyclic_Closed : public Path
+	 class KDL_DLLAPI Path_Cyclic_Closed : public Path
 	{
 		int times;
 		Path* geom;

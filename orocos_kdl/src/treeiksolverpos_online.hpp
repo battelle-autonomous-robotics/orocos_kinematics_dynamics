@@ -27,6 +27,7 @@
 
 #include <vector>
 #include <string>
+#include "kdlapi.hpp"
 #include "treeiksolver.hpp"
 #include "treefksolver.hpp"
 
@@ -61,7 +62,7 @@ public:
      * @return
      */
 
-    TreeIkSolverPos_Online(const double& nr_of_jnts,
+    KDL_DLLAPI TreeIkSolverPos_Online(const double& nr_of_jnts,
                            const std::vector<std::string>& endpoints,
                            const JntArray& q_min,
                            const JntArray& q_max,
@@ -71,9 +72,9 @@ public:
                            TreeFkSolverPos& fksolver,
                            TreeIkSolverVel& iksolver);
 
-    ~TreeIkSolverPos_Online();
+    KDL_DLLAPI ~TreeIkSolverPos_Online();
 
-    virtual double CartToJnt(const JntArray& q_in, const Frames& p_in, JntArray& q_out);
+    KDL_DLLAPI virtual double CartToJnt(const JntArray& q_in, const Frames& p_in, JntArray& q_out);
 
 private:
   /**

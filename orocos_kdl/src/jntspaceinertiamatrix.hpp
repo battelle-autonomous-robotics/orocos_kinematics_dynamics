@@ -22,6 +22,7 @@
 #ifndef KDL_JNTSPACEINERTIAMATRIX_HPP
 #define KDL_JNTSPACEINERTIAMATRIX_HPP
 
+#include "kdlapi.hpp"
 #include "frames.hpp"
 #include "jacobian.hpp"
 #include "jntarray.hpp"
@@ -79,7 +80,7 @@ class MyTask : public RTT::TaskContext
          * a resize() first, may result in program exit! See class
          * documentation.
          */
-        JntSpaceInertiaMatrix();
+        KDL_DLLAPI JntSpaceInertiaMatrix();
         /**
          * Constructor of the Joint-Space Inertia Matrix
          *
@@ -90,12 +91,12 @@ class MyTask : public RTT::TaskContext
          * @post 0 < rows()
          * @post all elements in data have 0 value
          */
-        explicit JntSpaceInertiaMatrix(int size);
+        KDL_DLLAPI explicit JntSpaceInertiaMatrix(int size);
         /** Copy constructor 
          * @note Will correctly copy an empty object
          */
-        JntSpaceInertiaMatrix(const JntSpaceInertiaMatrix& arg);
-        ~JntSpaceInertiaMatrix();
+        KDL_DLLAPI JntSpaceInertiaMatrix(const JntSpaceInertiaMatrix& arg);
+        KDL_DLLAPI ~JntSpaceInertiaMatrix();
         /** Resize the array 
          * @warning This causes a dynamic allocation (and potentially 	
          * also a dynamic deallocation). This _will_ negatively affect
@@ -105,9 +106,9 @@ class MyTask : public RTT::TaskContext
          * @post NULL != data
          * @post all elements in data have 0 value
          */
-        void resize(unsigned int newSize);
+        KDL_DLLAPI void resize(unsigned int newSize);
 		
-        JntSpaceInertiaMatrix& operator = ( const JntSpaceInertiaMatrix& arg);
+        KDL_DLLAPI JntSpaceInertiaMatrix& operator = ( const JntSpaceInertiaMatrix& arg);
         /**
          * get_item operator for the joint matrix
          *
@@ -115,7 +116,7 @@ class MyTask : public RTT::TaskContext
          * @return the joint value at position i, starting from 0
          * @pre 0 != size (ie non-default constructor or resize() called)
          */
-        double operator()(unsigned int i,unsigned int j)const;
+        KDL_DLLAPI double operator()(unsigned int i,unsigned int j)const;
         /**
          * set_item operator
          *
@@ -123,29 +124,29 @@ class MyTask : public RTT::TaskContext
          *from zero.
          * @pre 0 != size (ie non-default constructor or resize() called)
          */
-        double& operator()(unsigned int i,unsigned int j);
+        KDL_DLLAPI double& operator()(unsigned int i,unsigned int j);
         /**
          * Returns the number of rows and columns of the matrix
          *
          */
-        unsigned int rows()const;
+        KDL_DLLAPI unsigned int rows()const;
         /**
          * Returns the number of columns of the matrix.
          */
-        unsigned int columns()const;
+        KDL_DLLAPI unsigned int columns()const;
 
-        friend void Add(const JntSpaceInertiaMatrix& src1,const JntSpaceInertiaMatrix& src2,JntSpaceInertiaMatrix& dest);
-        friend void Subtract(const JntSpaceInertiaMatrix& src1,const JntSpaceInertiaMatrix& src2,JntSpaceInertiaMatrix& dest);
-        friend void Multiply(const JntSpaceInertiaMatrix& src,const double& factor,JntSpaceInertiaMatrix& dest);
-        friend void Divide(const JntSpaceInertiaMatrix& src,const double& factor,JntSpaceInertiaMatrix& dest);
-        friend void Multiply(const JntSpaceInertiaMatrix& src, const JntArray& vec, JntArray& dest);
-        friend void SetToZero(JntSpaceInertiaMatrix& matrix);
-        friend bool Equal(const JntSpaceInertiaMatrix& src1,const JntSpaceInertiaMatrix& src2,double eps);
-        friend bool operator==(const JntSpaceInertiaMatrix& src1,const JntSpaceInertiaMatrix& src2);
+        KDL_DLLAPI friend void Add(const JntSpaceInertiaMatrix& src1,const JntSpaceInertiaMatrix& src2,JntSpaceInertiaMatrix& dest);
+        KDL_DLLAPI friend void Subtract(const JntSpaceInertiaMatrix& src1,const JntSpaceInertiaMatrix& src2,JntSpaceInertiaMatrix& dest);
+        KDL_DLLAPI friend void Multiply(const JntSpaceInertiaMatrix& src,const double& factor,JntSpaceInertiaMatrix& dest);
+        KDL_DLLAPI friend void Divide(const JntSpaceInertiaMatrix& src,const double& factor,JntSpaceInertiaMatrix& dest);
+        KDL_DLLAPI friend void Multiply(const JntSpaceInertiaMatrix& src, const JntArray& vec, JntArray& dest);
+        KDL_DLLAPI friend void SetToZero(JntSpaceInertiaMatrix& matrix);
+        KDL_DLLAPI friend bool Equal(const JntSpaceInertiaMatrix& src1,const JntSpaceInertiaMatrix& src2,double eps);
+        KDL_DLLAPI friend bool operator==(const JntSpaceInertiaMatrix& src1,const JntSpaceInertiaMatrix& src2);
         //friend bool operator!=(const JntSpaceInertiaMatrix& src1,const JntSpaceInertiaMatrix& src2);
     };
 
-    bool operator==(const JntSpaceInertiaMatrix& src1,const JntSpaceInertiaMatrix& src2);
+    KDL_DLLAPI bool operator==(const JntSpaceInertiaMatrix& src1,const JntSpaceInertiaMatrix& src2);
     //bool operator!=(const JntSpaceInertiaMatrix& src1,const JntSpaceInertiaMatrix& src2);
 
     /**
@@ -157,7 +158,7 @@ class MyTask : public RTT::TaskContext
      * @param src2 B
      * @param dest C
      */
-    void Add(const JntSpaceInertiaMatrix& src1,const JntSpaceInertiaMatrix& src2,JntSpaceInertiaMatrix& dest);
+    KDL_DLLAPI void Add(const JntSpaceInertiaMatrix& src1,const JntSpaceInertiaMatrix& src2,JntSpaceInertiaMatrix& dest);
 
     /**
      * Function to subtract two joint matrix, all the arguments must
@@ -168,7 +169,7 @@ class MyTask : public RTT::TaskContext
      * @param src2 B
      * @param dest C
      */
-    void Subtract(const JntSpaceInertiaMatrix& src1,const JntSpaceInertiaMatrix& src2,JntSpaceInertiaMatrix& dest);
+    KDL_DLLAPI void Subtract(const JntSpaceInertiaMatrix& src1,const JntSpaceInertiaMatrix& src2,JntSpaceInertiaMatrix& dest);
 
     /**
      * Function to multiply all the array values with a scalar
@@ -179,7 +180,7 @@ class MyTask : public RTT::TaskContext
      * @param factor b
      * @param dest C
      */
-    void Multiply(const JntSpaceInertiaMatrix& src,const double& factor,JntSpaceInertiaMatrix& dest);
+    KDL_DLLAPI void Multiply(const JntSpaceInertiaMatrix& src,const double& factor,JntSpaceInertiaMatrix& dest);
 
     /**
      * Function to divide all the array values with a scalar
@@ -190,7 +191,7 @@ class MyTask : public RTT::TaskContext
      * @param factor b
      * @param dest C
      */
-    void Divide(const JntSpaceInertiaMatrix& src,const double& factor,JntSpaceInertiaMatrix& dest);
+    KDL_DLLAPI void Divide(const JntSpaceInertiaMatrix& src,const double& factor,JntSpaceInertiaMatrix& dest);
 
     /**
      * Function to multiply a KDL::Jacobian with a KDL::JntSpaceInertiaMatrix
@@ -204,14 +205,14 @@ class MyTask : public RTT::TaskContext
      * @param dest t
      * @post dest==Twist::Zero() if 0==src.rows() (ie src is empty)
      */
-    void Multiply(const JntSpaceInertiaMatrix& src, const JntArray& vec, JntArray& dest);
+    KDL_DLLAPI void Multiply(const JntSpaceInertiaMatrix& src, const JntArray& vec, JntArray& dest);
 
     /**
      * Function to set all the values of the array to 0
      *
      * @param array
      */
-    void SetToZero(JntSpaceInertiaMatrix& matrix);
+    KDL_DLLAPI void SetToZero(JntSpaceInertiaMatrix& matrix);
 
     /**
      * Function to check if two matrices are the same with a
@@ -223,9 +224,9 @@ class MyTask : public RTT::TaskContext
      * @return true if each element of src1 is within eps of the same
      * element in src2, or if both src1 and src2 have no data (ie 0==rows())
      */
-    bool Equal(const JntSpaceInertiaMatrix& src1,const JntSpaceInertiaMatrix& src2,double eps=epsilon);
+    KDL_DLLAPI bool Equal(const JntSpaceInertiaMatrix& src1,const JntSpaceInertiaMatrix& src2,double eps=epsilon);
 
-    bool operator==(const JntSpaceInertiaMatrix& src1,const JntSpaceInertiaMatrix& src2);
+    KDL_DLLAPI bool operator==(const JntSpaceInertiaMatrix& src1,const JntSpaceInertiaMatrix& src2);
 
 }
 

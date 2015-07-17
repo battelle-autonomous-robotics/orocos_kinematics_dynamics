@@ -19,6 +19,7 @@
 #ifndef RRFRAMES_IO
 #define RRFRAMES_IO
 
+#include "kdlapi.hpp"
 #include "utilities/utility_io.h"
 #include "utilities/rall2d_io.h"
 

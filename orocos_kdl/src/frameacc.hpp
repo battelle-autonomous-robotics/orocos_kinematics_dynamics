@@ -30,6 +30,7 @@
 #define RRFRAMES_H
 
 
+#include "kdlapi.hpp"
 #include "utilities/rall2d.h"
 #include "frames.hpp"
 
@@ -58,7 +59,7 @@ IMETHOD bool Equal(const VectorAcc& r1,const VectorAcc& r2,double eps=epsilon);
 IMETHOD bool Equal(const Vector& r1,const VectorAcc& r2,double eps=epsilon);
 IMETHOD bool Equal(const VectorAcc& r1,const Vector& r2,double eps=epsilon);
 
-class VectorAcc
+class KDL_DLLAPI VectorAcc
 {
 public:
     Vector p;   //!< position vector
@@ -107,7 +108,7 @@ public:
 
 
 
-class RotationAcc
+class KDL_DLLAPI RotationAcc
 {
 public:
     Rotation R;     //!< rotation matrix
@@ -162,7 +163,7 @@ public:
 
 
 
-class FrameAcc
+class KDL_DLLAPI FrameAcc
 {
 public:
     RotationAcc M;   //!< Rotation,angular velocity, and angular acceleration of frame.
@@ -206,7 +207,7 @@ public:
 
 
 //very similar to Wrench class.
-class TwistAcc
+class KDL_DLLAPI TwistAcc
 {
 public:
     VectorAcc vel;       //!< translational velocity and its 1st and 2nd derivative

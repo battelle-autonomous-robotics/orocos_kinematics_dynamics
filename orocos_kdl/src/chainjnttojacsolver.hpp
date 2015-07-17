@@ -22,6 +22,7 @@
 #ifndef KDL_CHAINJNTTOJACSOLVER_HPP
 #define KDL_CHAINJNTTOJACSOLVER_HPP
 
+#include "kdlapi.hpp"
 #include "solveri.hpp"
 #include "frames.hpp"
 #include "jacobian.hpp"

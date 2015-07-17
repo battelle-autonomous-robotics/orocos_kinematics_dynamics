@@ -22,6 +22,7 @@
 #ifndef KDL_CHAIN_IKSOLVER_RECURSIVE_NEWTON_EULER_HPP
 #define KDL_CHAIN_IKSOLVER_RECURSIVE_NEWTON_EULER_HPP
 
+#include "kdlapi.hpp"
 #include "chainidsolver.hpp"
 
 namespace KDL{
@@ -44,8 +45,8 @@ namespace KDL{
          * \param chain The kinematic chain to calculate the inverse dynamics for, an internal copy will be made.
          * \param grav The gravity vector to use during the calculation.
          */
-        ChainIdSolver_RNE(const Chain& chain,Vector grav);
-        ~ChainIdSolver_RNE(){};
+        KDL_DLLAPI ChainIdSolver_RNE(const Chain& chain,Vector grav);
+        KDL_DLLAPI ~ChainIdSolver_RNE(){};
         
         /**
          * Function to calculate from Cartesian forces to joint torques.
@@ -57,7 +58,7 @@ namespace KDL{
          * Output parameters:
          * \param torques the resulting torques for the joints
          */
-        int CartToJnt(const JntArray &q, const JntArray &q_dot, const JntArray &q_dotdot, const Wrenches& f_ext,JntArray &torques);
+        KDL_DLLAPI int CartToJnt(const JntArray &q, const JntArray &q_dot, const JntArray &q_dotdot, const Wrenches& f_ext,JntArray &torques);
 
     private:
         Chain chain;

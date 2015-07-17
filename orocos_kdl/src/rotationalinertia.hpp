@@ -22,6 +22,7 @@
 #ifndef KDL_ROTATIONALINERTIA_HPP
 #define KDL_ROTATIONALINERTIA_HPP
 
+#include "kdlapi.hpp"
 #include "frames.hpp"
 
 //------- class for only the Rotational Inertia --------
@@ -31,7 +32,7 @@ namespace KDL
     //Forward declaration
     class RigidBodyInertia;
 
-	class RotationalInertia{
+	class KDL_DLLAPI RotationalInertia{
     public:
               
         explicit RotationalInertia(double Ixx=0,double Iyy=0,double Izz=0,double Ixy=0,double Ixz=0,double Iyz=0);

@@ -22,8 +22,12 @@
 #ifndef KDL_CHAIN_HPP
 #define KDL_CHAIN_HPP
 
+#include "kdlapi.hpp"
 #include "segment.hpp"
 #include <string>
+
+//template class __declspec(dllexport) std::allocator<KDL::Segment>;
+//template class __declspec(dllexport) std::vector<KDL::Segment>;
 
 namespace KDL {
     /**
@@ -42,23 +46,23 @@ namespace KDL {
          * The constructor of a chain, a new chain is always empty.
          *
          */
-        Chain();
-        Chain(const Chain& in);
-        Chain& operator = (const Chain& arg);
+        KDL_DLLAPI Chain();
+        KDL_DLLAPI Chain(const Chain& in);
+        KDL_DLLAPI Chain& operator = (const Chain& arg);
 
         /**
          * Adds a new segment to the <strong>end</strong> of the chain.
          *
          * @param segment The segment to add
          */
-        void addSegment(const Segment& segment);
+        KDL_DLLAPI void addSegment(const Segment& segment);
         /**
          * Adds a complete chain to the <strong>end</strong> of the chain
          * The added chain is copied.
          *
          * @param chain The chain to add
          */
-        void addChain(const Chain& chain);
+        KDL_DLLAPI void addChain(const Chain& chain);
 
         /**
          * Request the total number of joints in the chain.\n
@@ -83,9 +87,9 @@ namespace KDL {
          *
          * @return a constant reference to the nr'd segment
          */
-        const Segment& getSegment(unsigned int nr)const;
+        KDL_DLLAPI const Segment& getSegment(unsigned int nr)const;
 
-        virtual ~Chain();
+        KDL_DLLAPI virtual ~Chain();
     };
 
 

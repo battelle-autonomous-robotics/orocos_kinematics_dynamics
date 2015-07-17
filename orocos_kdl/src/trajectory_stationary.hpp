@@ -16,6 +16,7 @@
 #ifndef TRAJECTORY_STATIONARY_H
 #define TRAJECTORY_STATIONARY_H
 
+#include "kdlapi.hpp"
 #include "trajectory.hpp"
 
 
@@ -25,7 +26,7 @@ namespace KDL {
    * for an amount of time.
    * @ingroup Motion
    */
-	class Trajectory_Stationary : public Trajectory
+	class KDL_DLLAPI Trajectory_Stationary : public Trajectory
 	  {
 		double duration;
 		Frame pos;

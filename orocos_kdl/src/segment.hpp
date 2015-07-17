@@ -23,6 +23,7 @@
 #ifndef KDL_SEGMENT_HPP
 #define KDL_SEGMENT_HPP
 
+#include "kdlapi.hpp"
 #include "frames.hpp"
 #include "rigidbodyinertia.hpp"
 #include "joint.hpp"
@@ -62,7 +63,7 @@ namespace KDL {
          * the segment, default: Frame::Identity()
          * @param M rigid body inertia of the segment, default: Inertia::Zero()
          */
-        explicit Segment(const std::string& name, const Joint& joint=Joint(Joint::None), const Frame& f_tip=Frame::Identity(),const RigidBodyInertia& I = RigidBodyInertia::Zero());
+        KDL_DLLAPI explicit Segment(const std::string& name, const Joint& joint=Joint(Joint::None), const Frame& f_tip=Frame::Identity(),const RigidBodyInertia& I = RigidBodyInertia::Zero());
         /**
          * Constructor of the segment
          *
@@ -72,11 +73,11 @@ namespace KDL {
          * the segment, default: Frame::Identity()
          * @param M rigid body inertia of the segment, default: Inertia::Zero()
          */
-        explicit Segment(const Joint& joint=Joint(Joint::None), const Frame& f_tip=Frame::Identity(),const RigidBodyInertia& I = RigidBodyInertia::Zero());
-        Segment(const Segment& in);
-        Segment& operator=(const Segment& arg);
+        KDL_DLLAPI explicit Segment(const Joint& joint=Joint(Joint::None), const Frame& f_tip=Frame::Identity(),const RigidBodyInertia& I = RigidBodyInertia::Zero());
+        KDL_DLLAPI Segment(const Segment& in);
+        KDL_DLLAPI Segment& operator=(const Segment& arg);
 
-        virtual ~Segment();
+        KDL_DLLAPI virtual ~Segment();
 
         /**
          * Request the pose of the segment, given the joint position q.
@@ -85,7 +86,7 @@ namespace KDL {
          *
          * @return pose from the root to the tip of the segment
          */
-        Frame pose(const double& q)const;
+        KDL_DLLAPI Frame pose(const double& q)const;
         /**
          * Request the 6D-velocity of the tip of the segment, given
          * the joint position q and the joint velocity qdot.
@@ -97,7 +98,7 @@ namespace KDL {
          *in the base-frame of the segment(root) and with the tip of
          *the segment as reference point.
          */
-        Twist twist(const double& q,const double& qdot)const;
+        KDL_DLLAPI Twist twist(const double& q,const double& qdot)const;
 
         /**
          * Request the name of the segment
@@ -147,8 +148,7 @@ namespace KDL {
          * @return the original parent end - segment end pose.
          */
         Frame getFrameToTip()const
-        {
-            
+        {            
             return joint.pose(0)*f_tip;
         }
 

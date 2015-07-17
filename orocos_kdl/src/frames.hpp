@@ -125,6 +125,7 @@
 #define KDL_FRAMES_H
 
 
+#include "kdlapi.hpp"
 #include "utilities/kdl-config.h"
 #include "utilities/utility.h"
 
@@ -157,7 +158,7 @@ inline bool Equal(const Frame2& a,const Frame2& b,double eps=epsilon);
 /**
  * \brief A concrete implementation of a 3 dimensional vector class
  */
-class Vector
+class KDL_DLLAPI Vector
 {
 public:
     double data[3];
@@ -298,7 +299,7 @@ public:
  \par type
   Concrete implementation
 */
-class Rotation
+class KDL_DLLAPI Rotation
 {
 public:
     double data[9];
@@ -567,7 +568,7 @@ public:
     Frame.M contains columns that represent the axes of frame B wrt frame A
     Frame.p contains the origin of frame B expressed in frame A.
 */
-class Frame {
+class KDL_DLLAPI Frame {
 public:
     Vector p;       //!< origine of the Frame
     Rotation M;     //!< Orientation of the Frame
@@ -717,7 +718,7 @@ public:
  * This class represents a twist.  A twist is the combination of translational
  * velocity and rotational velocity applied at one point.
 */
-class Twist {
+class KDL_DLLAPI Twist {
 public:
     Vector vel; //!< The velocity of that point
     Vector rot; //!< The rotational velocity of that point.
@@ -875,7 +876,7 @@ public:
  *
  * This class represents a Wrench.  A Wrench is the force and torque applied at a point
  */
-class Wrench
+class KDL_DLLAPI Wrench
 {
 public:
     Vector force;       //!< Force that is applied at the origin of the current ref frame
@@ -956,7 +957,7 @@ public:
 
 
 //! 2D version of Vector
-class Vector2
+class KDL_DLLAPI Vector2
 {
     double data[2];
 public:
@@ -1047,7 +1048,7 @@ public:
 
 //! A 2D Rotation class, for conventions see Rotation. For further documentation
 //! of the methods see Rotation class.
-class Rotation2
+class KDL_DLLAPI Rotation2
 {
     double s,c;
     //! c,s represent  cos(angle), sin(angle), this also represents first col. of rot matrix
@@ -1091,7 +1092,7 @@ public:
 
 //! A 2D frame class, for further documentation see the Frames class
 //! for methods with unchanged semantics.
-class Frame2
+class KDL_DLLAPI Frame2
  {
 public:
     Vector2 p;          //!< origine of the Frame

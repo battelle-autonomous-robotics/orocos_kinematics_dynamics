@@ -44,6 +44,7 @@
 #ifndef KDL_MOTION_TRAJECTORY_SEGMENT_H
 #define KDL_MOTION_TRAJECTORY_SEGMENT_H
 
+#include "kdlapi.hpp"
 #include "frames.hpp"
 #include "frames_io.hpp"
 #include "trajectory.hpp"
@@ -59,7 +60,7 @@ namespace KDL {
 	 * trajectory
 	 * @ingroup Motion
 	 */
-	class Trajectory_Segment :  public Trajectory
+	class KDL_DLLAPI Trajectory_Segment :  public Trajectory
 	{
 		VelocityProfile* motprof;
 		Path*      geom;

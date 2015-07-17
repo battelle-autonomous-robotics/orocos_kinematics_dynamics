@@ -29,6 +29,7 @@
 #ifndef MOTIONPROFILE_DIRAC_H
 #define MOTIONPROFILE_DIRAC_H
 
+#include "kdlapi.hpp"
 #include "velocityprofile.hpp"
 
 
@@ -45,7 +46,7 @@ namespace KDL {
 	 * Duration() == 0;
 	 * @ingroup Motion
 	 */
-	class VelocityProfile_Dirac : public VelocityProfile
+	class KDL_DLLAPI VelocityProfile_Dirac : public VelocityProfile
 	{
 		double p1,p2,t;
 	public:

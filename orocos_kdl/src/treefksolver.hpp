@@ -25,6 +25,7 @@
 
 #include <string>
 
+#include "kdlapi.hpp"
 #include "tree.hpp"
 //#include "framevel.hpp"
 //#include "frameacc.hpp"
@@ -42,7 +43,7 @@ namespace KDL {
      */
 
     //Forward definition
-    class TreeFkSolverPos {
+    class KDL_DLLAPI TreeFkSolverPos {
     public:
         /**
          * Calculate forward position kinematics for a KDL::Tree,

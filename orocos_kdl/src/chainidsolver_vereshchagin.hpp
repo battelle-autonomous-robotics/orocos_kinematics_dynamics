@@ -22,6 +22,7 @@
 #ifndef KDL_CHAINIDSOLVER_VERESHCHAGIN_HPP
 #define KDL_CHAINIDSOLVER_VERESHCHAGIN_HPP
 
+#include "kdlapi.hpp"
 #include "chainidsolver.hpp"
 #include "frames.hpp"
 #include "articulatedbodyinertia.hpp"
@@ -50,9 +51,9 @@ public:
      * \param root_acc The acceleration vector of the root to use during the calculation.(most likely contains gravity)
      *
      */
-    ChainIdSolver_Vereshchagin(const Chain& chain, Twist root_acc, unsigned int nc);
+    KDL_DLLAPI ChainIdSolver_Vereshchagin(const Chain& chain, Twist root_acc, unsigned int nc);
 
-    ~ChainIdSolver_Vereshchagin()
+    KDL_DLLAPI ~ChainIdSolver_Vereshchagin()
     {
     };
 
@@ -67,7 +68,7 @@ public:
      * \param q_dotdot The joint accelerations
      * \param torques the resulting constraint torques for the joints
      */
-    int CartToJnt(const JntArray &q, const JntArray &q_dot, JntArray &q_dotdot, const Jacobian& alfa, const JntArray& beta, const Wrenches& f_ext, JntArray &torques);
+    KDL_DLLAPI int CartToJnt(const JntArray &q, const JntArray &q_dot, JntArray &q_dotdot, const Jacobian& alfa, const JntArray& beta, const Wrenches& f_ext, JntArray &torques);
 
     /*
     //Returns cartesian positions of links in base coordinates

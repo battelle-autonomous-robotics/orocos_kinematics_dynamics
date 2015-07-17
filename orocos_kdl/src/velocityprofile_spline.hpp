@@ -1,6 +1,7 @@
 #ifndef VELOCITYPROFILE_SPLINE_H
 #define VELOCITYPROFILE_SPLINE_H
 
+#include "kdlapi.hpp"
 #include "velocityprofile.hpp"
 
 namespace KDL
@@ -9,7 +10,7 @@ namespace KDL
 	 * \brief A spline VelocityProfile trajectory interpolation.
 	 * @ingroup Motion
 	 */
-class VelocityProfile_Spline : public VelocityProfile
+class KDL_DLLAPI VelocityProfile_Spline : public VelocityProfile
 {
 public:
     VelocityProfile_Spline();

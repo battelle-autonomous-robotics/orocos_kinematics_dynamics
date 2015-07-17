@@ -22,8 +22,8 @@
 #ifndef KDL_RIGIDBODYINERTIA_HPP
 #define KDL_RIGIDBODYINERTIA_HPP
 
+#include "kdlapi.hpp"
 #include "frames.hpp"
-
 #include "rotationalinertia.hpp"
 
 namespace KDL {
@@ -34,7 +34,7 @@ namespace KDL {
      *	The inertia is defined in a certain reference point and a certain reference base.
      *	The reference point does not have to coincide with the origin of the reference frame.
      */
-    class RigidBodyInertia{
+    class KDL_DLLAPI RigidBodyInertia{
     public:
         
         /**

@@ -42,13 +42,13 @@ ENDIF ( NOT CMAKE_BUILD_TYPE )
 
 SET( KDL_CFLAGS "")
 
-find_package(Eigen 3 QUIET)
-if(NOT Eigen_FOUND)
-  include(${PROJ_SOURCE_DIR}/config/FindEigen3.cmake)
-  set(Eigen_INCLUDE_DIR ${EIGEN3_INCLUDE_DIR})
-endif()
+#find_package(Eigen 3 QUIET)
+#if(NOT Eigen_FOUND)
+  #include(${PROJ_SOURCE_DIR}/config/FindEigen3.cmake)
+  set(Eigen_INCLUDE_DIR "" CACHE PATH "Path to the Eigen headers")
+#endif()
 include_directories(${Eigen_INCLUDE_DIR})
-SET(KDL_CFLAGS "${KDL_CFLAGS} -I${Eigen_INCLUDE_DIR}")
+SET(KDL_CFLAGS "${KDL_CFLAGS} -I${Eigen_INCLUDE_DIR} -DENABLE_KDL_DLLEXPORT")
 
 # Check the platform STL containers capabilities
 include(config/CheckSTLContainers.cmake)

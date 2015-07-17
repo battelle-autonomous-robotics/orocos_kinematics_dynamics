@@ -44,6 +44,7 @@
 #ifndef KDL_PATHCOMPOSITE_H
 #define KDL_PATHCOMPOSITE_H
 
+#include "kdlapi.hpp"
 #include "frames.hpp"
 #include "frames_io.hpp"
 #include "path.hpp"
@@ -83,51 +84,51 @@ namespace KDL {
 	public:
 
 
-		Path_Composite();
+		KDL_DLLAPI Path_Composite();
 
 		/**
 		 * Adds a Path* to this composite
 		 */
-		void Add(Path* geom, bool aggregate=true);
+		KDL_DLLAPI void Add(Path* geom, bool aggregate=true);
 
 
-		virtual double LengthToS(double length);
+		KDL_DLLAPI virtual double LengthToS(double length);
 		/**
 		 * Returns the total path length of the trajectory
 		 * (has dimension LENGTH)
 		 * This is not always a physical length , ie when dealing with rotations
 		 * that are dominant.
 		 */
-		virtual double PathLength();
+		KDL_DLLAPI virtual double PathLength();
 
 		/**
 		 * Returns the Frame at the current path length s
 		 */
-		virtual Frame Pos(double s) const;
+		KDL_DLLAPI virtual Frame Pos(double s) const;
 
 		/**
 		 * Returns the velocity twist at path length s theta and with
 		 * derivative of s == sd
 		 */
-		virtual Twist Vel(double s,double sd) const;
+		KDL_DLLAPI virtual Twist Vel(double s,double sd) const;
 
 		/**
 		 * Returns the acceleration twist at path length s and with
 		 * derivative of s == sd, and 2nd derivative of s == sdd
 		 */
-		virtual Twist Acc(double s,double sd,double sdd) const;
+		KDL_DLLAPI virtual Twist Acc(double s,double sd,double sdd) const;
 
-		virtual Path* Clone();
+		KDL_DLLAPI virtual Path* Clone();
 
 		/**
 		 * Writes one of the derived objects to the stream
 		 */
-		virtual void Write(std::ostream& os);
+		KDL_DLLAPI virtual void Write(std::ostream& os);
 
 		/**
 		 * returns the number of underlying segments.
 		 */
-		virtual int GetNrOfSegments();
+		KDL_DLLAPI virtual int GetNrOfSegments();
 
 		/**
 		 * returns a pointer to the underlying Path of the given segment number i.
@@ -136,7 +137,7 @@ namespace KDL {
 		 * \warning The pointer is still owned by this class and is lifetime depends on the lifetime
 		 *          of this class.
 		 */
-		virtual Path* GetSegment(int i);
+		KDL_DLLAPI virtual Path* GetSegment(int i);
 
 		/**
 		 * gets the length to the end of the given segment.
@@ -144,14 +145,14 @@ namespace KDL {
 		 * \return length to the end of the segment, i.e. the value for s corresponding to the end of
 		 *         this segment.
 		 */
-		virtual double GetLengthToEndOfSegment(int i);
+		KDL_DLLAPI virtual double GetLengthToEndOfSegment(int i);
 
 		/**
 		 * \param s [INPUT] path length variable for the composite.
 		 * \param segment_number [OUTPUT] segments that corresponds to the path length variable s.
 		 * \param inner_s [OUTPUT] path length to use within the segment.
 		 */
-		virtual void GetCurrentSegmentLocation(double s, int &segment_number, double& inner_s);
+		KDL_DLLAPI virtual void GetCurrentSegmentLocation(double s, int &segment_number, double& inner_s);
 
 		/**
 		 * gets an identifier indicating the type of this Path object
@@ -160,7 +161,7 @@ namespace KDL {
 			return ID_COMPOSITE;
 		}
 
-		virtual ~Path_Composite();
+		KDL_DLLAPI virtual ~Path_Composite();
 	};
 
 

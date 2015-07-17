@@ -44,6 +44,7 @@
 #ifndef KDL_MOTION_VELOCITYPROFILE_TRAP_H
 #define KDL_MOTION_VELOCITYPROFILE_TRAP_H
 
+#include "kdlapi.hpp"
 #include "velocityprofile.hpp"
 
 
@@ -57,7 +58,7 @@ namespace KDL {
 	 * A Trapezoidal VelocityProfile implementation.
 	 * @ingroup Motion
 	 */
-class VelocityProfile_Trap : public VelocityProfile
+class KDL_DLLAPI VelocityProfile_Trap : public VelocityProfile
 	{
 		// For "running" a motion profile :
 		double a1,a2,a3; // coef. from ^0 -> ^2 of first part

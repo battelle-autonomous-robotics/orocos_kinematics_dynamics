@@ -17,6 +17,7 @@
 #ifndef TRAJECTORY_COMPOSITE_H
 #define TRAJECTORY_COMPOSITE_H
 
+#include "kdlapi.hpp"
 #include "trajectory.hpp"
 #include "path_composite.hpp"
 #include <vector>
@@ -39,22 +40,22 @@ class Trajectory_Composite: public Trajectory
 				    // Trajectory
 
 	public:
-		Trajectory_Composite();
+		KDL_DLLAPI Trajectory_Composite();
 		// Constructs an empty composite
 
-		virtual double Duration() const;
-		virtual Frame Pos(double time) const;
-		virtual Twist Vel(double time) const;
-		virtual Twist Acc(double time) const;
+		KDL_DLLAPI virtual double Duration() const;
+		KDL_DLLAPI virtual Frame Pos(double time) const;
+		KDL_DLLAPI virtual Twist Vel(double time) const;
+		KDL_DLLAPI virtual Twist Acc(double time) const;
 
-		virtual void Add(Trajectory* elem);
+		KDL_DLLAPI virtual void Add(Trajectory* elem);
 		// Adds trajectory <elem> to the end of the sequence.
 
-		virtual void Destroy();
-		virtual void Write(std::ostream& os) const;
-		virtual Trajectory* Clone() const;
+		KDL_DLLAPI virtual void Destroy();
+		KDL_DLLAPI virtual void Write(std::ostream& os) const;
+		KDL_DLLAPI virtual Trajectory* Clone() const;
 
-		virtual ~Trajectory_Composite();
+		KDL_DLLAPI virtual ~Trajectory_Composite();
 	};
 
 

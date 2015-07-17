@@ -21,6 +21,8 @@
 
 #ifndef KDL_STIFFNESS_H
 #define KDL_STIFFNESS_H
+
+#include "kdlapi.hpp"
 #include "frames.hpp"
  
 
@@ -33,7 +35,7 @@ namespace KDL {
  * first 3 elements are stiffness for translations
  * last  3 elements are stiffness for rotations.
  */
-class Stiffness {
+class KDL_DLLAPI Stiffness {
     double data[6];
 public:
 	Stiffness() {

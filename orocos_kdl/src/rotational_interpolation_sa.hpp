@@ -44,6 +44,7 @@
 #ifndef KDL_ROTATIONALINTERPOLATION_SINGLEAXIS_H
 #define KDL_ROTATIONALINTERPOLATION_SINGLEAXIS_H
 
+#include "kdlapi.hpp"
 #include "frames.hpp"
 #include "frames_io.hpp"
 #include "rotational_interpolation.hpp"
@@ -60,7 +61,7 @@ namespace KDL {
 	  * to try to interpolate a 180 degrees rotation.
 	  * @ingroup Motion
 	  */
-class RotationalInterpolation_SingleAxis: public RotationalInterpolation
+class KDL_DLLAPI RotationalInterpolation_SingleAxis: public RotationalInterpolation
 	{
 		Rotation R_base_start;
 		Rotation R_base_end;

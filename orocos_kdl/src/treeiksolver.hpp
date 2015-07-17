@@ -8,6 +8,7 @@
 #ifndef TREEIKSOLVER_HPP_
 #define TREEIKSOLVER_HPP_
 
+#include "kdlapi.hpp"
 #include "tree.hpp"
 #include "jntarray.hpp"
 #include "frames.hpp"
@@ -25,7 +26,7 @@ typedef std::map<std::string, Frame> Frames;
  *
  * @ingroup KinematicFamily
  */
-class TreeIkSolverPos {
+class KDL_DLLAPI TreeIkSolverPos {
 public:
     /**
      * Calculate inverse position kinematics, from cartesian
@@ -51,7 +52,7 @@ public:
  *
  * @ingroup KinematicFamily
  */
-class TreeIkSolverVel {
+class KDL_DLLAPI TreeIkSolverVel {
 public:
     /**
      * Calculate inverse velocity kinematics, from joint positions

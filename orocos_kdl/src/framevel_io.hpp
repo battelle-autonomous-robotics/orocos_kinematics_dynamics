@@ -18,6 +18,7 @@
 #ifndef KDL_FRAMESVEL_IO
 #define KDL_FRAMESVEL_IO
 
+#include "kdlapi.hpp"
 #include "utilities/utility_io.h"
 #include "utilities/rall1d_io.h"
 

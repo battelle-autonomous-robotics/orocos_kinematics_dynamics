@@ -22,6 +22,7 @@
 #ifndef KDLCHAINDYNPARAM_HPP
 #define KDLCHAINDYNPARAM_HPP
 
+#include "kdlapi.hpp"
 #include "chainidsolver_recursive_newton_euler.hpp"
 #include "articulatedbodyinertia.hpp"
 #include "jntspaceinertiamatrix.hpp"
@@ -46,24 +47,24 @@ namespace KDL {
     class ChainDynParam
     {
     public:
-        ChainDynParam(const Chain& chain, Vector _grav);
-        virtual ~ChainDynParam();
+        KDL_DLLAPI ChainDynParam(const Chain& chain, Vector _grav);
+        KDL_DLLAPI virtual ~ChainDynParam();
 
-        virtual int JntToCoriolis(const JntArray &q, const JntArray &q_dot, JntArray &coriolis);
-	virtual int JntToMass(const JntArray &q, JntSpaceInertiaMatrix& H);
-	virtual int JntToGravity(const JntArray &q,JntArray &gravity);
+        KDL_DLLAPI virtual int JntToCoriolis(const JntArray &q, const JntArray &q_dot, JntArray &coriolis);
+	    KDL_DLLAPI virtual int JntToMass(const JntArray &q, JntSpaceInertiaMatrix& H);
+	    KDL_DLLAPI virtual int JntToGravity(const JntArray &q,JntArray &gravity);
 
     private:
         const Chain chain;
-	int nr;
-	unsigned int nj;
+	    int nr;
+	    unsigned int nj;
         unsigned int ns;	
-	Vector grav;
-	Vector vectornull;
-	JntArray jntarraynull;
-	ChainIdSolver_RNE chainidsolver_coriolis;
-	ChainIdSolver_RNE chainidsolver_gravity;
-	std::vector<Wrench> wrenchnull;
+	    Vector grav;
+	    Vector vectornull;
+	    JntArray jntarraynull;
+	    ChainIdSolver_RNE chainidsolver_coriolis;
+	    ChainIdSolver_RNE chainidsolver_gravity;
+	    std::vector<Wrench> wrenchnull;
         std::vector<Frame> X;
         std::vector<Twist> S;
         //std::vector<RigidBodyInertia> I;

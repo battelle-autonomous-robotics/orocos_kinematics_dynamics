@@ -23,6 +23,7 @@
 #ifndef KDLTREEFKSOLVERPOS_RECURSIVE_HPP
 #define KDLTREEFKSOLVERPOS_RECURSIVE_HPP
 
+#include "kdlapi.hpp"
 #include "treefksolver.hpp"
 
 namespace KDL {
@@ -37,10 +38,10 @@ namespace KDL {
     class TreeFkSolverPos_recursive : public TreeFkSolverPos
     {
     public:
-        TreeFkSolverPos_recursive(const Tree& tree);
-        ~TreeFkSolverPos_recursive();
+        KDL_DLLAPI TreeFkSolverPos_recursive(const Tree& tree);
+        KDL_DLLAPI ~TreeFkSolverPos_recursive();
 
-        virtual int JntToCart(const JntArray& q_in, Frame& p_out, std::string segmentName);
+        KDL_DLLAPI virtual int JntToCart(const JntArray& q_in, Frame& p_out, std::string segmentName);
 
     private:
         const Tree tree;

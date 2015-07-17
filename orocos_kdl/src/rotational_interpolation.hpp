@@ -44,6 +44,7 @@
 #ifndef KDL_ROTATIONALINTERPOLATION_H
 #define KDL_ROTATIONALINTERPOLATION_H
 
+#include "kdlapi.hpp"
 #include "frames.hpp"
 #include "frames_io.hpp"
 
@@ -59,7 +60,7 @@ namespace KDL {
  *   object is responsible for setting these each time
  * @ingroup Motion
  */
-class RotationalInterpolation
+class KDL_DLLAPI RotationalInterpolation
 	{
 	public:
 		/**

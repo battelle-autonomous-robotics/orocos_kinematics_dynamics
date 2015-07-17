@@ -22,10 +22,13 @@
 #ifndef KDL_JOINT_HPP
 #define KDL_JOINT_HPP
 
+#include "kdlapi.hpp"
 #include "frames.hpp"
-#include <string>
 #include <exception>
+#include <string>
 
+//template class __declspec(dllexport) std::allocator<char>;
+//template class __declspec(dllexport) std::basic_string<char, std::char_traits<char>, std::allocator<char> >;
 
 namespace KDL {
 
@@ -59,7 +62,7 @@ namespace KDL {
          * @param stiffness 1D stiffness along the joint axis,
          * default: 0
          */
-        explicit Joint(const std::string& name, const JointType& type=None,const double& scale=1,const double& offset=0,
+        KDL_DLLAPI explicit Joint(const std::string& name, const JointType& type=None,const double& scale=1,const double& offset=0,
               const double& inertia=0,const double& damping=0,const double& stiffness=0);
         /**
          * Constructor of a joint.
@@ -74,7 +77,7 @@ namespace KDL {
          * @param stiffness 1D stiffness along the joint axis,
          * default: 0
          */
-        explicit Joint(const JointType& type=None,const double& scale=1,const double& offset=0,
+        KDL_DLLAPI explicit Joint(const JointType& type=None,const double& scale=1,const double& offset=0,
                const double& inertia=0,const double& damping=0,const double& stiffness=0);
         /**
          * Constructor of a joint.
@@ -91,7 +94,7 @@ namespace KDL {
          * @param stiffness 1D stiffness along the joint axis,
          * default: 0
          */
-        Joint(const std::string& name, const Vector& _origin, const Vector& _axis, const JointType& type, const double& _scale=1, const double& _offset=0,
+        KDL_DLLAPI Joint(const std::string& name, const Vector& _origin, const Vector& _axis, const JointType& type, const double& _scale=1, const double& _offset=0,
 	      const double& _inertia=0, const double& _damping=0, const double& _stiffness=0);
         /**
          * Constructor of a joint.
@@ -107,7 +110,7 @@ namespace KDL {
          * @param stiffness 1D stiffness along the joint axis,
          * default: 0
          */
-        Joint(const Vector& _origin, const Vector& _axis, const JointType& type, const double& _scale=1, const double& _offset=0,
+        KDL_DLLAPI Joint(const Vector& _origin, const Vector& _axis, const JointType& type, const double& _scale=1, const double& _offset=0,
 	      const double& _inertia=0, const double& _damping=0, const double& _stiffness=0);
 
         /**
@@ -118,7 +121,7 @@ namespace KDL {
          *
          * @return the resulting 6D-pose
          */
-        Frame pose(const double& q)const;
+        KDL_DLLAPI Frame pose(const double& q)const;
         /**
          * Request the resulting 6D-velocity with a joint velocity qdot
          *
@@ -126,21 +129,21 @@ namespace KDL {
          *
          * @return the resulting 6D-velocity
          */
-        Twist twist(const double& qdot)const;
+        KDL_DLLAPI Twist twist(const double& qdot)const;
 
         /**                                                                     
          * Request the Vector corresponding to the axis of a revolute joint.    
          *                                                                      
          * @return Vector. e.g (1,0,0) for RotX etc.                            
          */
-        Vector JointAxis() const;
+        KDL_DLLAPI Vector JointAxis() const;
 
         /**                                                                     
          * Request the Vector corresponding to the origin of a revolute joint.    
          *                                                                      
          * @return Vector
          */
-        Vector JointOrigin() const;
+        KDL_DLLAPI Vector JointOrigin() const;
         /**
            * Request the name of the joint
            *
@@ -192,7 +195,7 @@ namespace KDL {
             }
         };
 
-        virtual ~Joint();
+        KDL_DLLAPI virtual ~Joint();
 
     private:
         std::string name;

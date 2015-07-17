@@ -22,6 +22,7 @@
 #ifndef KDL_CHAIN_IKSOLVERVEL_PINV_NSO_HPP
 #define KDL_CHAIN_IKSOLVERVEL_PINV_NSO_HPP
 
+#include "kdlapi.hpp"
 #include "chainiksolver.hpp"
 #include "chainjnttojacsolver.hpp"
 #include <Eigen/Core>
@@ -60,11 +61,11 @@ namespace KDL
          * @param alpha the null-space velocity gain
          *
          */
-        ChainIkSolverVel_pinv_nso(const Chain& chain, JntArray opt_pos, JntArray weights, double eps=0.00001,int maxiter=150, double alpha = 0.25);
-        explicit ChainIkSolverVel_pinv_nso(const Chain& chain, double eps=0.00001,int maxiter=150, double alpha = 0.25);
-        ~ChainIkSolverVel_pinv_nso();
+        KDL_DLLAPI ChainIkSolverVel_pinv_nso(const Chain& chain, JntArray opt_pos, JntArray weights, double eps=0.00001,int maxiter=150, double alpha = 0.25);
+        KDL_DLLAPI explicit ChainIkSolverVel_pinv_nso(const Chain& chain, double eps=0.00001,int maxiter=150, double alpha = 0.25);
+        KDL_DLLAPI ~ChainIkSolverVel_pinv_nso();
 
-        virtual int CartToJnt(const JntArray& q_in, const Twist& v_in, JntArray& qdot_out);
+        KDL_DLLAPI virtual int CartToJnt(const JntArray& q_in, const Twist& v_in, JntArray& qdot_out);
         /**
          * not (yet) implemented.
          *
@@ -77,7 +78,7 @@ namespace KDL
          *@param weights the joint weights
          *
          */
-        virtual int setWeights(const JntArray &weights);
+        KDL_DLLAPI virtual int setWeights(const JntArray &weights);
 
         /**
          *Set optimal joint positions
@@ -85,7 +86,7 @@ namespace KDL
          *@param opt_pos optimal joint positions
          *
          */
-        virtual int setOptPos(const JntArray &opt_pos);
+        KDL_DLLAPI virtual int setOptPos(const JntArray &opt_pos);
 
         /**
          *Set null psace velocity gain
@@ -93,7 +94,7 @@ namespace KDL
          *@param alpha NUllspace velocity cgain
          *
          */
-        virtual int setAlpha(const double alpha);
+        KDL_DLLAPI virtual int setAlpha(const double alpha);
 
     private:
         const Chain chain;

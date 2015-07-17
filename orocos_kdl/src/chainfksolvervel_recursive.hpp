@@ -22,6 +22,7 @@
 #ifndef KDL_CHAIN_FKSOLVERVEL_RECURSIVE_HPP
 #define KDL_CHAIN_FKSOLVERVEL_RECURSIVE_HPP
 
+#include "kdlapi.hpp"
 #include "chainfksolver.hpp"
 
 namespace KDL
@@ -37,10 +38,10 @@ namespace KDL
     class ChainFkSolverVel_recursive : public ChainFkSolverVel
     {
     public:
-        ChainFkSolverVel_recursive(const Chain& chain);
-        ~ChainFkSolverVel_recursive();
+        KDL_DLLAPI ChainFkSolverVel_recursive(const Chain& chain);
+        KDL_DLLAPI ~ChainFkSolverVel_recursive();
 
-        virtual int JntToCart(const JntArrayVel& q_in,FrameVel& out,int segmentNr=-1);
+        KDL_DLLAPI virtual int JntToCart(const JntArrayVel& q_in,FrameVel& out,int segmentNr=-1);
     private:
         const Chain chain;
     };

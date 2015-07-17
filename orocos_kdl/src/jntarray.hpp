@@ -22,6 +22,7 @@
 #ifndef KDL_JNTARRAY_HPP
 #define KDL_JNTARRAY_HPP
 
+#include "kdlapi.hpp"
 #include "frames.hpp"
 #include "jacobian.hpp"
 
@@ -78,7 +79,7 @@ class MyTask : public RTT::TaskContext
          * a resize() first, may result in program exit! See class
          * documentation.
          */
-        JntArray();
+        KDL_DLLAPI JntArray();
         /**
          * Constructor of the joint array
          *
@@ -89,12 +90,12 @@ class MyTask : public RTT::TaskContext
          * @post 0 < rows()
          * @post all elements in data have 0 value
          */
-        explicit JntArray(unsigned int size);
+        KDL_DLLAPI explicit JntArray(unsigned int size);
         /** Copy constructor 
          * @note Will correctly copy an empty object
          */
-        JntArray(const JntArray& arg);
-        ~JntArray();
+        KDL_DLLAPI JntArray(const JntArray& arg);
+        KDL_DLLAPI ~JntArray();
         /** Resize the array 
          * @warning This causes a dynamic allocation (and potentially 	
          * also a dynamic deallocation). This _will_ negatively affect
@@ -104,9 +105,9 @@ class MyTask : public RTT::TaskContext
          * @post NULL != data
          * @post all elements in data have 0 value
          */
-        void resize(unsigned int newSize);
+        KDL_DLLAPI void resize(unsigned int newSize);
 		
-        JntArray& operator = ( const JntArray& arg);
+        KDL_DLLAPI JntArray& operator = ( const JntArray& arg);
         /**
          * get_item operator for the joint array, if a second value is
          * given it should be zero, since a JntArray resembles a column.
@@ -115,7 +116,7 @@ class MyTask : public RTT::TaskContext
          * @return the joint value at position i, starting from 0
          * @pre 0 != size (ie non-default constructor or resize() called)
          */
-        double operator()(unsigned int i,unsigned int j=0)const;
+        KDL_DLLAPI double operator()(unsigned int i,unsigned int j=0)const;
         /**
          * set_item operator, again if a second value is given it
          *should be zero.
@@ -124,30 +125,30 @@ class MyTask : public RTT::TaskContext
          *from zero.
          * @pre 0 != size (ie non-default constructor or resize() called)
          */
-        double& operator()(unsigned int i,unsigned int j=0);
+        KDL_DLLAPI double& operator()(unsigned int i,unsigned int j=0);
         /**
          * Returns the number of rows (size) of the array
          *
          */
-        unsigned int rows()const;
+        KDL_DLLAPI unsigned int rows()const;
         /**
          * Returns the number of columns of the array, always 1.
          */
-        unsigned int columns()const;
+        KDL_DLLAPI unsigned int columns()const;
 
-        friend void Add(const JntArray& src1,const JntArray& src2,JntArray& dest);
-        friend void Subtract(const JntArray& src1,const JntArray& src2,JntArray& dest);
-        friend void Multiply(const JntArray& src,const double& factor,JntArray& dest);
-        friend void Divide(const JntArray& src,const double& factor,JntArray& dest);
-        friend void MultiplyJacobian(const Jacobian& jac, const JntArray& src, Twist& dest);
-        friend void SetToZero(JntArray& array);
-        friend bool Equal(const JntArray& src1,const JntArray& src2,double eps);
+        KDL_DLLAPI friend void Add(const JntArray& src1,const JntArray& src2,JntArray& dest);
+        KDL_DLLAPI friend void Subtract(const JntArray& src1,const JntArray& src2,JntArray& dest);
+        KDL_DLLAPI friend void Multiply(const JntArray& src,const double& factor,JntArray& dest);
+        KDL_DLLAPI friend void Divide(const JntArray& src,const double& factor,JntArray& dest);
+        KDL_DLLAPI friend void MultiplyJacobian(const Jacobian& jac, const JntArray& src, Twist& dest);
+        KDL_DLLAPI friend void SetToZero(JntArray& array);
+        KDL_DLLAPI friend bool Equal(const JntArray& src1,const JntArray& src2,double eps);
 
-        friend bool operator==(const JntArray& src1,const JntArray& src2);
+        KDL_DLLAPI friend bool operator==(const JntArray& src1,const JntArray& src2);
         //friend bool operator!=(const JntArray& src1,const JntArray& src2);
         };
 
-    bool operator==(const JntArray& src1,const JntArray& src2);
+    KDL_DLLAPI bool operator==(const JntArray& src1,const JntArray& src2);
     //bool operator!=(const JntArray& src1,const JntArray& src2);
 
     /**
@@ -159,7 +160,7 @@ class MyTask : public RTT::TaskContext
      * @param src2 B
      * @param dest C
      */
-    void Add(const JntArray& src1,const JntArray& src2,JntArray& dest);
+    KDL_DLLAPI void Add(const JntArray& src1,const JntArray& src2,JntArray& dest);
     /**
      * Function to subtract two joint arrays, all the arguments must
      * have the same size: A - B = C. This function is
@@ -169,7 +170,7 @@ class MyTask : public RTT::TaskContext
      * @param src2 B
      * @param dest C
      */
-    void Subtract(const JntArray& src1,const JntArray& src2,JntArray& dest);
+    KDL_DLLAPI void Subtract(const JntArray& src1,const JntArray& src2,JntArray& dest);
     /**
      * Function to multiply all the array values with a scalar
      * factor: A*b=C. This function is aliasing-safe, A can be the
@@ -179,7 +180,7 @@ class MyTask : public RTT::TaskContext
      * @param factor b
      * @param dest C
      */
-    void Multiply(const JntArray& src,const double& factor,JntArray& dest);
+    KDL_DLLAPI void Multiply(const JntArray& src,const double& factor,JntArray& dest);
     /**
      * Function to divide all the array values with a scalar
      * factor: A/b=C. This function is aliasing-safe, A can be the
@@ -189,7 +190,7 @@ class MyTask : public RTT::TaskContext
      * @param factor b
      * @param dest C
      */
-    void Divide(const JntArray& src,const double& factor,JntArray& dest);
+    KDL_DLLAPI void Divide(const JntArray& src,const double& factor,JntArray& dest);
     /**
      * Function to multiply a KDL::Jacobian with a KDL::JntArray
      * to get a KDL::Twist, it should not be used to calculate the
@@ -202,13 +203,13 @@ class MyTask : public RTT::TaskContext
      * @param dest t
      * @post dest==Twist::Zero() if 0==src.rows() (ie src is empty)
      */
-    void MultiplyJacobian(const Jacobian& jac, const JntArray& src, Twist& dest);
+    KDL_DLLAPI void MultiplyJacobian(const Jacobian& jac, const JntArray& src, Twist& dest);
     /**
      * Function to set all the values of the array to 0
      *
      * @param array
      */
-    void SetToZero(JntArray& array);
+    KDL_DLLAPI void SetToZero(JntArray& array);
     /**
      * Function to check if two arrays are the same with a
      *precision of eps
@@ -219,7 +220,7 @@ class MyTask : public RTT::TaskContext
      * @return true if each element of src1 is within eps of the same
      * element in src2, or if both src1 and src2 have no data (ie 0==rows())
      */
-    bool Equal(const JntArray& src1,const JntArray& src2,double eps=epsilon);
+    KDL_DLLAPI bool Equal(const JntArray& src1,const JntArray& src2,double eps=epsilon);
 
 }
 

@@ -22,6 +22,7 @@
 #ifndef KDLCHAINIKSOLVERPOS_NR_HPP
 #define KDLCHAINIKSOLVERPOS_NR_HPP
 
+#include "kdlapi.hpp"
 #include "chainiksolver.hpp"
 #include "chainfksolver.hpp"
 
@@ -55,9 +56,9 @@ namespace KDL {
          *
          * @return
          */
-        ChainIkSolverPos_NR(const Chain& chain,ChainFkSolverPos& fksolver,ChainIkSolverVel& iksolver,
+        KDL_DLLAPI ChainIkSolverPos_NR(const Chain& chain,ChainFkSolverPos& fksolver,ChainIkSolverVel& iksolver,
                             unsigned int maxiter=100,double eps=1e-6);
-        ~ChainIkSolverPos_NR();
+        KDL_DLLAPI ~ChainIkSolverPos_NR();
 
         /**
          * Find an output joint pose \a q_out, given a starting joint pose
@@ -70,10 +71,10 @@ namespace KDL {
          *  E_IKSOLVER_FAILED=velocity solver failed
          *  E_NO_CONVERGE=solution did not converge (e.g. large displacement, low iterations)
          */
-        virtual int CartToJnt(const JntArray& q_init, const Frame& p_in, JntArray& q_out);
+        KDL_DLLAPI virtual int CartToJnt(const JntArray& q_init, const Frame& p_in, JntArray& q_out);
 
         /// @copydoc KDL::SolverI::strError()
-        virtual const char* strError(const int error) const;
+        KDL_DLLAPI virtual const char* strError(const int error) const;
 
     private:
         const Chain chain;

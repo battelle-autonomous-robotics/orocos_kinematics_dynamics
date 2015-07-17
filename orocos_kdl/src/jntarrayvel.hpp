@@ -22,6 +22,7 @@
 #ifndef KDL_JNTARRAYVEL_HPP
 #define KDL_JNTARRAYVEL_HPP
 
+#include "kdlapi.hpp"
 #include "utilities/utility.h"
 #include "jntarray.hpp"
 #include "framevel.hpp"
@@ -30,17 +31,16 @@ namespace KDL
 {
     // Equal is friend function, but default arguments for friends are forbidden (§8.3.6.4)
     class JntArrayVel;
-    bool Equal(const JntArrayVel& src1,const JntArrayVel& src2,double eps=epsilon);
-    void Add(const JntArrayVel& src1,const JntArrayVel& src2,JntArrayVel& dest);
-    void Add(const JntArrayVel& src1,const JntArray& src2,JntArrayVel& dest);
-    void Subtract(const JntArrayVel& src1,const JntArrayVel& src2,JntArrayVel& dest);
-    void Subtract(const JntArrayVel& src1,const JntArray& src2,JntArrayVel& dest);
-    void Multiply(const JntArrayVel& src,const double& factor,JntArrayVel& dest);
-    void Multiply(const JntArrayVel& src,const doubleVel& factor,JntArrayVel& dest);
-    void Divide(const JntArrayVel& src,const double& factor,JntArrayVel& dest);
-    void Divide(const JntArrayVel& src,const doubleVel& factor,JntArrayVel& dest);
-    void SetToZero(JntArrayVel& array);
-
+    KDL_DLLAPI bool Equal(const JntArrayVel& src1,const JntArrayVel& src2,double eps=epsilon);
+    KDL_DLLAPI void Add(const JntArrayVel& src1,const JntArrayVel& src2,JntArrayVel& dest);
+    KDL_DLLAPI void Add(const JntArrayVel& src1,const JntArray& src2,JntArrayVel& dest);
+    KDL_DLLAPI void Subtract(const JntArrayVel& src1,const JntArrayVel& src2,JntArrayVel& dest);
+    KDL_DLLAPI void Subtract(const JntArrayVel& src1,const JntArray& src2,JntArrayVel& dest);
+    KDL_DLLAPI void Multiply(const JntArrayVel& src,const double& factor,JntArrayVel& dest);
+    KDL_DLLAPI void Multiply(const JntArrayVel& src,const doubleVel& factor,JntArrayVel& dest);
+    KDL_DLLAPI void Divide(const JntArrayVel& src,const double& factor,JntArrayVel& dest);
+    KDL_DLLAPI void Divide(const JntArrayVel& src,const doubleVel& factor,JntArrayVel& dest);
+    KDL_DLLAPI void SetToZero(JntArrayVel& array);
 
     class JntArrayVel
     {
@@ -48,26 +48,26 @@ namespace KDL
         JntArray q;
         JntArray qdot;
     public:
-        JntArrayVel(){};
-        explicit JntArrayVel(unsigned int size);
-        JntArrayVel(const JntArray& q,const JntArray& qdot);
-        explicit JntArrayVel(const JntArray& q);
+        KDL_DLLAPI JntArrayVel(){};
+        KDL_DLLAPI explicit JntArrayVel(unsigned int size);
+        KDL_DLLAPI JntArrayVel(const JntArray& q,const JntArray& qdot);
+        KDL_DLLAPI explicit JntArrayVel(const JntArray& q);
 
-        void resize(unsigned int newSize);
+        KDL_DLLAPI void resize(unsigned int newSize);
 
-        JntArray value()const;
-        JntArray deriv()const;
+        KDL_DLLAPI JntArray value()const;
+        KDL_DLLAPI JntArray deriv()const;
 
-        friend void Add(const JntArrayVel& src1,const JntArrayVel& src2,JntArrayVel& dest);
-        friend void Add(const JntArrayVel& src1,const JntArray& src2,JntArrayVel& dest);
-        friend void Subtract(const JntArrayVel& src1,const JntArrayVel& src2,JntArrayVel& dest);
-        friend void Subtract(const JntArrayVel& src1,const JntArray& src2,JntArrayVel& dest);
-        friend void Multiply(const JntArrayVel& src,const double& factor,JntArrayVel& dest);
-        friend void Multiply(const JntArrayVel& src,const doubleVel& factor,JntArrayVel& dest);
-        friend void Divide(const JntArrayVel& src,const double& factor,JntArrayVel& dest);
-        friend void Divide(const JntArrayVel& src,const doubleVel& factor,JntArrayVel& dest);
-        friend void SetToZero(JntArrayVel& array);
-        friend bool Equal(const JntArrayVel& src1,const JntArrayVel& src2,double eps);
+        KDL_DLLAPI friend void Add(const JntArrayVel& src1,const JntArrayVel& src2,JntArrayVel& dest);
+        KDL_DLLAPI friend void Add(const JntArrayVel& src1,const JntArray& src2,JntArrayVel& dest);
+        KDL_DLLAPI friend void Subtract(const JntArrayVel& src1,const JntArrayVel& src2,JntArrayVel& dest);
+        KDL_DLLAPI friend void Subtract(const JntArrayVel& src1,const JntArray& src2,JntArrayVel& dest);
+        KDL_DLLAPI friend void Multiply(const JntArrayVel& src,const double& factor,JntArrayVel& dest);
+        KDL_DLLAPI friend void Multiply(const JntArrayVel& src,const doubleVel& factor,JntArrayVel& dest);
+        KDL_DLLAPI friend void Divide(const JntArrayVel& src,const double& factor,JntArrayVel& dest);
+        KDL_DLLAPI friend void Divide(const JntArrayVel& src,const doubleVel& factor,JntArrayVel& dest);
+        KDL_DLLAPI friend void SetToZero(JntArrayVel& array);
+        KDL_DLLAPI friend bool Equal(const JntArrayVel& src1,const JntArrayVel& src2,double eps);
 
     };
 

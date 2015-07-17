@@ -44,6 +44,7 @@
 #ifndef MOTIONPROFILE_RECT_H
 #define MOTIONPROFILE_RECT_H
 
+#include "kdlapi.hpp"
 #include "velocityprofile.hpp"
 
 
@@ -53,7 +54,7 @@ namespace KDL {
 	 * for moving from A to B.
 	 * @ingroup Motion
 	 */
-	class VelocityProfile_Rectangular : public VelocityProfile
+	class KDL_DLLAPI VelocityProfile_Rectangular : public VelocityProfile
 		// Defines a rectangular velocityprofile.
 		// (i.e. constant velocity)
 	{

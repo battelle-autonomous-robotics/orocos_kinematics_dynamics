@@ -8,6 +8,7 @@
 #ifndef TREEIKSOLVERVEL_WDLS_HPP_
 #define TREEIKSOLVERVEL_WDLS_HPP_
 
+#include "kdlapi.hpp"
 #include "treeiksolver.hpp"
 #include "treejnttojacsolver.hpp"
 #include <Eigen/Core>
@@ -20,10 +21,10 @@ namespace KDL {
     public:
         static const int E_SVD_FAILED = -100; //! Child SVD failed
 
-        TreeIkSolverVel_wdls(const Tree& tree, const std::vector<std::string>& endpoints);
-        virtual ~TreeIkSolverVel_wdls();
+        KDL_DLLAPI TreeIkSolverVel_wdls(const Tree& tree, const std::vector<std::string>& endpoints);
+        KDL_DLLAPI virtual ~TreeIkSolverVel_wdls();
         
-        virtual double CartToJnt(const JntArray& q_in, const Twists& v_in, JntArray& qdot_out);
+        KDL_DLLAPI virtual double CartToJnt(const JntArray& q_in, const Twists& v_in, JntArray& qdot_out);
 
         /*
          * Set the joint space weighting matrix
@@ -47,7 +48,7 @@ namespace KDL {
          * it gets an infinite weight in the norm computation.  For
          * more detailed explanation : vincent.padois@upmc.fr
          */
-        void setWeightJS(const MatrixXd& Mq);
+        KDL_DLLAPI void setWeightJS(const MatrixXd& Mq);
         const MatrixXd& getWeightJS() const {return Wq;}
         
         /*
@@ -73,10 +74,10 @@ namespace KDL {
          * weighted norm sqrt(|x_dot-Jq_dot|'*(M_x^2)*|x_dot-Jq_dot|).
          * For more detailed explanation : vincent.padois@upmc.fr
          */
-        void setWeightTS(const MatrixXd& Mx);
+        KDL_DLLAPI void setWeightTS(const MatrixXd& Mx);
         const MatrixXd& getWeightTS() const {return Wy;}
 
-        void setLambda(const double& lambda);
+        KDL_DLLAPI void setLambda(const double& lambda);
         double getLambda () const {return lambda;}
 
     private:

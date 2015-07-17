@@ -31,6 +31,7 @@
  ***************************************************************************/
 
 
+#include "kdlapi.hpp"
 #include "chainiksolver.hpp"
 #include "chain.hpp"
 #include <Eigen/Dense>
@@ -89,7 +90,7 @@ public:
 	 *        increments are so small that they effectively (in floating point) do not change the joint angles any more.  The default
 	 *        is a few digits above numerical accuracy.
      */
-    ChainIkSolverPos_LMA(
+    KDL_DLLAPI ChainIkSolverPos_LMA(
     		const KDL::Chain& _chain,
     		const Eigen::Matrix<double,6,1>& _L,
     		double _eps=1E-5,
@@ -102,7 +103,7 @@ public:
      *
      *  \f$\mathbf{L} = \mathrm{diag}\left( \begin{bmatrix} 1 & 1 & 1 & 0.01 & 0.01 & 0.01 \end{bmatrix} \right) \f$.
      */
-    ChainIkSolverPos_LMA(
+    KDL_DLLAPI ChainIkSolverPos_LMA(
     		const KDL::Chain& _chain,
     		double _eps=1E-5,
     		int _maxiter=500,
@@ -120,32 +121,32 @@ public:
      *        -2 if joint position increments are to small,
      *        -3 if number of iterations is exceeded.
      */
-    virtual int CartToJnt(const KDL::JntArray& q_init, const KDL::Frame& T_base_goal, KDL::JntArray& q_out);
+    KDL_DLLAPI virtual int CartToJnt(const KDL::JntArray& q_init, const KDL::Frame& T_base_goal, KDL::JntArray& q_out);
 
     /**
      * \brief destructor.
      */
-    virtual ~ChainIkSolverPos_LMA();
+    KDL_DLLAPI virtual ~ChainIkSolverPos_LMA();
 
     /**
      * \brief for internal use only.
      *
      * Only exposed for test and diagnostic purposes.
      */
-    void compute_fwdpos(const VectorXq& q);
+    KDL_DLLAPI void compute_fwdpos(const VectorXq& q);
 
     /**
      * \brief for internal use only.
      * Only exposed for test and diagnostic purposes.
      * compute_fwdpos(q) should always have been called before.
      */
-    void compute_jacobian(const VectorXq& q);
+    KDL_DLLAPI void compute_jacobian(const VectorXq& q);
 
     /**
      * \brief for internal use only.
      * Only exposed for test and diagnostic purposes.
      */
-    void display_jac(const KDL::JntArray& jval);
+    KDL_DLLAPI void display_jac(const KDL::JntArray& jval);
 
 
 

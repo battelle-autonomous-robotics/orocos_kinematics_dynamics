@@ -44,6 +44,7 @@
 #ifndef KDL_MOTION_ROUNDEDCOMPOSITE_H
 #define KDL_MOTION_ROUNDEDCOMPOSITE_H
 
+#include "kdlapi.hpp"
 #include "path.hpp"
 #include "path_composite.hpp"
 #include "rotational_interpolation.hpp"
@@ -55,7 +56,7 @@ namespace KDL {
  *
  * @ingroup Motion
  */
-class Path_RoundedComposite : public Path
+class KDL_DLLAPI Path_RoundedComposite : public Path
 	{
 		/** a Path_Composite is aggregated to hold the rounded trajectory
 		 * with circles and lines

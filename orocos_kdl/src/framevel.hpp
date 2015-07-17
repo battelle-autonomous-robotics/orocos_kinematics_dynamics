@@ -23,6 +23,7 @@
 #ifndef KDL_FRAMEVEL_H
 #define KDL_FRAMEVEL_H
 
+#include "kdlapi.hpp"
 #include "utilities/utility.h"
 #include "utilities/rall1d.h"
 #include "utilities/traits.h"
@@ -81,7 +82,7 @@ IMETHOD bool Equal(const TwistVel& a,const TwistVel& b,double eps=epsilon);
 IMETHOD bool Equal(const Twist& a,const TwistVel& b,double eps=epsilon);
 IMETHOD bool Equal(const TwistVel& a,const Twist& b,double eps=epsilon);
 
-class VectorVel
+class KDL_DLLAPI VectorVel
 // = TITLE
 //     An VectorVel is a Vector and its first derivative
 // = CLASS TYPE
@@ -136,7 +137,7 @@ public:
 
 
 
-class RotationVel
+class KDL_DLLAPI RotationVel
 // = TITLE
 //     An RotationVel is a Rotation and its first derivative, a rotation vector
 // = CLASS TYPE
@@ -194,7 +195,7 @@ public:
 
 
 
-class FrameVel
+class KDL_DLLAPI FrameVel
 // = TITLE
 //     An FrameVel is a Frame and its first derivative, a Twist vector
 // = CLASS TYPE
@@ -250,7 +251,7 @@ public:
 
 
 //very similar to Wrench class.
-class TwistVel
+class KDL_DLLAPI TwistVel
 // = TITLE
 // This class represents a TwistVel. This is a velocity and rotational velocity together
 {

@@ -44,6 +44,8 @@
 #ifndef KDL_MOTION_PATH_H
 #define KDL_MOTION_PATH_H
 
+#include "kdlapi.hpp"
+
 #include "frames.hpp"
 
 #include <vector>
@@ -55,7 +57,7 @@ namespace KDL {
 /**
  * The specification of the path of a trajectory.
  */
-class Path
+class KDL_DLLAPI Path
 	{
 	public:
 		enum IdentifierType {

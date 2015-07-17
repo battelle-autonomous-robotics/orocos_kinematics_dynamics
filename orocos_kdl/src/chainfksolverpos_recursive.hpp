@@ -22,6 +22,7 @@
 #ifndef KDLCHAINFKSOLVERPOS_RECURSIVE_HPP
 #define KDLCHAINFKSOLVERPOS_RECURSIVE_HPP
 
+#include "kdlapi.hpp"
 #include "chainfksolver.hpp"
 
 namespace KDL {
@@ -36,10 +37,10 @@ namespace KDL {
     class ChainFkSolverPos_recursive : public ChainFkSolverPos
     {
     public:
-        ChainFkSolverPos_recursive(const Chain& chain);
-        ~ChainFkSolverPos_recursive();
+        KDL_DLLAPI ChainFkSolverPos_recursive(const Chain& chain);
+        KDL_DLLAPI ~ChainFkSolverPos_recursive();
 
-        virtual int JntToCart(const JntArray& q_in, Frame& p_out, int segmentNr=-1);
+        KDL_DLLAPI virtual int JntToCart(const JntArray& q_in, Frame& p_out, int segmentNr=-1);
 
     private:
         const Chain chain;

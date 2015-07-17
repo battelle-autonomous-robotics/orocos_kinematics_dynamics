@@ -3,6 +3,7 @@
 #ifndef KDL_CHAIN_IKSOLVERVEL_PINV_GIVENS_HPP
 #define KDL_CHAIN_IKSOLVERVEL_PINV_GIVENS_HPP
 
+#include "kdlapi.hpp"
 #include "chainiksolver.hpp"
 #include "chainjnttojacsolver.hpp"
 
@@ -35,10 +36,10 @@ namespace KDL
          * default: 150
          *
          */
-        explicit ChainIkSolverVel_pinv_givens(const Chain& chain);
-        ~ChainIkSolverVel_pinv_givens();
+        KDL_DLLAPI explicit ChainIkSolverVel_pinv_givens(const Chain& chain);
+        KDL_DLLAPI ~ChainIkSolverVel_pinv_givens();
 
-        virtual int CartToJnt(const JntArray& q_in, const Twist& v_in, JntArray& qdot_out);
+        KDL_DLLAPI virtual int CartToJnt(const JntArray& q_in, const Twist& v_in, JntArray& qdot_out);
         /**
          * not (yet) implemented.
          *

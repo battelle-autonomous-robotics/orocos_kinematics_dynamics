@@ -22,6 +22,7 @@
 #ifndef KDL_TREE_HPP
 #define KDL_TREE_HPP
 
+#include "kdlapi.hpp"
 #include "config.h"
 
 #include "segment.hpp"
@@ -111,9 +112,9 @@ namespace KDL
         /**
          * The constructor of a tree, a new tree is always empty
          */
-        explicit Tree(const std::string& root_name="root");
-        Tree(const Tree& in);
-        Tree& operator= (const Tree& arg);
+        KDL_DLLAPI explicit Tree(const std::string& root_name="root");
+        KDL_DLLAPI Tree(const Tree& in);
+        KDL_DLLAPI Tree& operator= (const Tree& arg);
 
         /**
          * Adds a new segment to the end of the segment with
@@ -125,7 +126,7 @@ namespace KDL
          *
          * @return false if hook_name could not be found.
          */
-         bool addSegment(const Segment& segment, const std::string& hook_name);
+         KDL_DLLAPI bool addSegment(const Segment& segment, const std::string& hook_name);
 
         /**
          * Adds a complete chain to the end of the segment with
@@ -135,7 +136,7 @@ namespace KDL
          *
          * @return false if hook_name could not be found.
          */
-        bool addChain(const Chain& chain, const std::string& hook_name);
+        KDL_DLLAPI bool addChain(const Chain& chain, const std::string& hook_name);
 
         /**
          * Adds a complete tree to the end of the segment with
@@ -146,7 +147,7 @@ namespace KDL
          *
          * @return false if hook_name could not be found
          */
-        bool addTree(const Tree& tree, const std::string& hook_name);
+        KDL_DLLAPI bool addTree(const Tree& tree, const std::string& hook_name);
 
         /**
          * Request the total number of joints in the tree.\n
@@ -199,7 +200,7 @@ namespace KDL
          *
          * @return success or failure
          */
-      bool getChain(const std::string& chain_root, const std::string& chain_tip, Chain& chain)const;
+         KDL_DLLAPI bool getChain(const std::string& chain_root, const std::string& chain_tip, Chain& chain)const;
 
 
         const SegmentMap& getSegments()const
